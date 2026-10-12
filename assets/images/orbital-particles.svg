@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title description">
+  <title id="title">认识这个世界：轨道粒子</title>
+  <desc id="description">三颗蓝绿色粒子沿椭圆轨道环绕发光的行星，象征从不同角度观察同一个世界。</desc>
+  <defs>
+    <radialGradient id="space" cx="50%" cy="48%" r="72%">
+      <stop offset="0" stop-color="#142842"/>
+      <stop offset="1" stop-color="#091321"/>
+    </radialGradient>
+    <radialGradient id="planet" cx="34%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#a7eee2"/>
+      <stop offset=".48" stop-color="#55bdbd"/>
+      <stop offset="1" stop-color="#28628a"/>
+    </radialGradient>
+    <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="planet-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="960" height="360" rx="24" fill="url(#space)"/>
+  <g fill="#8fafd2" opacity=".8">
+    <circle cx="112" cy="68" r="1.5"/><circle cx="219" cy="284" r="1.2"/>
+    <circle cx="359" cy="51" r="1.2"/><circle cx="785" cy="62" r="1.4"/>
+    <circle cx="848" cy="270" r="1.2"/><circle cx="705" cy="314" r="1"/>
+  </g>
+  <g transform="translate(555 180)">
+    <ellipse rx="205" ry="73" fill="none" stroke="#78a9d1" stroke-opacity=".28" transform="rotate(-24)"/>
+    <ellipse rx="164" ry="116" fill="none" stroke="#78a9d1" stroke-opacity=".25" transform="rotate(55)"/>
+    <ellipse rx="228" ry="54" fill="none" stroke="#78a9d1" stroke-opacity=".24" transform="rotate(27)"/>
+    <circle r="60" fill="#53bdbd" opacity=".18" filter="url(#planet-glow)"/>
+    <circle r="51" fill="url(#planet)"/>
+    <path d="M-37-11c19-24 45-25 73-9M-31 19c25 12 44 10 66-4" fill="none" stroke="#d7fff2" stroke-opacity=".32" stroke-width="2"/>
+    <circle r="2.5" fill="#dffff5" opacity=".8"/>
+    <g>
+      <circle cx="205" cy="0" r="5" fill="#80bdff" filter="url(#glow)"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="16s" repeatCount="indefinite"/>
+    </g>
+    <g>
+      <circle cx="164" cy="0" r="4" fill="#75e3d0" filter="url(#glow)"/>
+      <animateTransform attributeName="transform" type="rotate" from="55" to="415" dur="22s" repeatCount="indefinite"/>
+    </g>
+    <g>
+      <circle cx="228" cy="0" r="3" fill="#c0aaff" filter="url(#glow)"/>
+      <animateTransform attributeName="transform" type="rotate" from="27" to="-333" dur="28s" repeatCount="indefinite"/>
+    </g>
+  </g>
+  <g font-family="sans-serif">
+    <text x="94" y="153" fill="#82a3c3" font-size="11" letter-spacing="3">OBSERVE</text>
+    <path d="M94 171h36" stroke="#54ccbd" stroke-width="2"/>
+    <text x="94" y="205" fill="#e6f1fb" font-size="29" font-weight="600">世界很大，</text>
+    <text x="94" y="247" fill="#80b4ff" font-size="29" font-weight="600">从好奇开始。</text>
+    <text x="94" y="281" fill="#9db1c7" font-size="12">A FIELD GUIDE TO OUR WORLD</text>
+  </g>
+</svg>
