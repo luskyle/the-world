@@ -24,6 +24,7 @@ html { color-scheme: light; scroll-behavior: smooth; scroll-padding-top: 90px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
+:where(a, button, input):focus-visible { outline: 3px solid rgba(57, 126, 232, .48); outline-offset: 3px; }
 .skip-link { position: fixed; z-index: 20; top: 10px; left: 10px; padding: 10px 15px; transform: translateY(-150%); border-radius: 8px; background: var(--ink); color: white; }
 .skip-link:focus { transform: translateY(0); }
 
@@ -325,6 +326,7 @@ html[data-theme="dark"] .site-nav a { color: #b6c5d6; }
 html[data-theme="dark"] .header-cta,
 html[data-theme="dark"] .theme-toggle { border-color: #30445d; background: #142136; color: #d8e6f5; }
 html[data-theme="dark"] .hero { background: radial-gradient(ellipse at 77% 42%, rgba(28, 62, 91, .52), transparent 40%), linear-gradient(115deg, #0d1726, #111e2e 64%, #10212b); }
+html[data-theme="dark"] .button-primary { background: #397ee8; color: #fff; }
 html[data-theme="dark"] .hero-intro,
 html[data-theme="dark"] .text-link { color: #b0c0d2; }
 html[data-theme="dark"] .hero-note,
