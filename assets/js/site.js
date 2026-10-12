@@ -1,4 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.querySelector(".theme-toggle");
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const updateThemeButton = () => {
+    if (!themeToggle) return;
+    const isDark = document.documentElement.dataset.theme === "dark";
+    const label = isDark ? "切换到浅色主题" : "切换到深色主题";
+    themeToggle.setAttribute("aria-label", label);
+    themeToggle.setAttribute("title", label);
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    if (themeColor) themeColor.content = isDark ? "#0b1220" : "#f4f8fc";
+  };
+
+  if (themeToggle) {
+    updateThemeButton();
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      updateThemeButton();
+      try {
+        localStorage.setItem("world-theme", nextTheme);
+      } catch {
+        // Keep the in-page theme change even if the preference cannot be saved.
+      }
+    });
+  }
+
   const search = document.querySelector("#article-search");
   const cards = Array.from(document.querySelectorAll(".article-card"));
   const empty = document.querySelector("#no-results");
