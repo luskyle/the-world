@@ -1,0 +1,50 @@
+title: 认识这个世界
+description: 从天文、环境、生命、文化、科技与未来出发，用通俗叙事认识我们身处的世界。
+url: https://luskyle.github.io
+baseurl: /the-world
+markdown: kramdown
+permalink: pretty
+exclude:
+  - .github
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+topics:
+  - id: astronomy
+    name: 天文
+    english: ASTRONOMY
+    description: 从月亮、行星到宇宙，读懂我们头顶的星空。
+    icon: ✳
+    available: true
+  - id: environment
+    name: 环境
+    english: ENVIRONMENT
+    description: 看见气候、生态与人类生活之间的联系。
+    icon: ◌
+    available: false
+  - id: life
+    name: 生命
+    english: LIFE
+    description: 认识生命的起源、多样性与演化。
+    icon: ⌁
+    available: false
+  - id: culture
+    name: 文化
+    english: CULTURE
+    description: 从历史、语言与日常生活理解人类。
+    icon: ◈
+    available: false
+  - id: technology
+    name: 科技
+    english: TECHNOLOGY
+    description: 探索技术如何改变我们的生活。
+    icon: ⌘
+    available: false
+  - id: future
+    name: 未来
+    english: FUTURE
+    description: 思考正在到来的变化与可能性。
+    icon: ↗
+    available: false

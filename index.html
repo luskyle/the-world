@@ -1,0 +1,89 @@
+---
+layout: default
+title: 认识这个世界
+description: 从天文、环境、生命、文化、科技与未来出发，用通俗叙事认识我们身处的世界。
+---
+{% assign articles = site.pages | where: "layout", "article" | sort: "order" %}
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-line"></span> A FIELD GUIDE TO OUR WORLD</div>
+      <h1>世界很大，<br><span>从好奇开始。</span></h1>
+      <p class="hero-intro">从头顶的星空，到脚下的土地；从生命如何诞生，到未来将去向何方。用简单的故事，慢慢读懂我们身处的世界。</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#topics">探索六大主题 <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="#latest">先读一篇 <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-note"><span class="note-sparkle" aria-hidden="true">✳</span> 给好奇的人，一张认识世界的地图。</div>
+    </div>
+    <div class="hero-art" aria-label="以行星轨道和星点构成的装饰插画" role="img">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="orbit orbit-three"></div>
+      <div class="orbit-planet"><span></span></div>
+      <span class="star star-one">✦</span><span class="star star-two">·</span><span class="star star-three">✧</span>
+      <span class="orbit-caption">OBSERVE<br>·<br>CONNECT<br>·<br>UNDERSTAND</span>
+      <span class="art-index">01 — 06</span>
+    </div>
+    <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 / 06</span></div>
+  </section>
+
+  <section class="topic-section section-wrap" id="topics">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> SIX WINDOWS, ONE WORLD</div>
+        <h2>从六个方向，<span>认识同一个世界。</span></h2>
+      </div>
+      <p class="section-aside">每个主题，都是一扇入口。<br>从你感兴趣的地方开始。</p>
+    </div>
+    <div class="topic-grid">
+      {% for topic in site.topics %}
+        <a class="topic-card{% unless topic.available %} topic-soon{% endunless %}{% if topic.available %} topic-active{% endif %}" href="{% if topic.available %}#latest{% else %}#topics{% endif %}"{% unless topic.available %} aria-label="{{ topic.name }}，内容筹备中"{% endunless %}>
+          <div class="topic-card-top"><span class="topic-icon" aria-hidden="true">{{ topic.icon }}</span><span class="topic-index">0{{ forloop.index }}</span></div>
+          <div class="topic-english">{{ topic.english }}</div>
+          <h3>{{ topic.name }}{% unless topic.available %}<span class="soon-label">即将展开</span>{% endunless %}</h3>
+          <p>{{ topic.description }}</p>
+          <span class="topic-arrow" aria-hidden="true">{% if topic.available %}↗{% else %}· · ·{% endif %}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="latest-section" id="latest">
+    <div class="section-wrap">
+      <div class="section-heading latest-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE FIRST COLLECTION</div>
+          <h2>从星空开始，<span>读懂我们的位置。</span></h2>
+        </div>
+        <label class="search-box">
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <input id="article-search" type="search" placeholder="搜一搜感兴趣的内容" autocomplete="off" aria-label="搜索文章">
+          <kbd>/</kbd>
+        </label>
+      </div>
+      <div class="collection-banner">
+        <div class="collection-mark" aria-hidden="true"><span>✳</span></div>
+        <div><span class="collection-label">SERIES 01 · ASTRONOMY</span><h3>仰望星空之前，人类先学会了观察。</h3></div>
+        <span class="collection-count">{{ articles.size }} 篇文章</span>
+      </div>
+      <div class="article-list" id="article-list">
+        {% for article in articles %}
+          <a class="article-card" href="{{ article.url | relative_url }}" data-search="{{ article.title | append: ' ' | append: article.description | append: ' 天文 星空 宇宙 行星 月亮 日食 历法' | downcase | escape }}">
+            <span class="article-number">{{ article.order | prepend: "0" | slice: -2, 2 }}</span>
+            <span class="article-card-main"><span class="article-card-tag">{{ article.topic_name }} <span>·</span> {{ article.reading_minutes }} 分钟</span><span class="article-card-title">{{ article.title }}</span><span class="article-card-description">{{ article.description }}</span></span>
+            <span class="article-card-arrow" aria-hidden="true">↗</span>
+          </a>
+        {% endfor %}
+      </div>
+      <p class="no-results" id="no-results" hidden>暂时没有找到相关内容，换个关键词试试？</p>
+      <p class="search-count" id="search-count" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="about-section section-wrap" id="about">
+    <div class="about-mark" aria-hidden="true"><span class="about-orbit"></span><span class="about-core">w.</span></div>
+    <div class="about-copy"><div class="eyebrow"><span class="eyebrow-line"></span> A SMALL NOTE</div><h2>不是把世界讲得更复杂，<br><span>而是把复杂的世界讲清楚。</span></h2><p>这里没有门槛，也没有标准答案。我们从一个问题出发，沿着证据和故事走一小段路。希望每一次阅读，都让世界多一点点清晰。</p></div>
+    <a class="about-link" href="https://github.com/luskyle/the-world">了解项目 <span aria-hidden="true">↗</span></a>
+  </section>
+</main>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f8fc">
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+    <meta property="og:type" content="website">
+    <title>{% if page.title and page.title != site.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    {% if page.layout == "article" %}
+      <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+    {% endif %}
+  </head>
+  <body class="{% if page.layout == 'article' %}article-page{% else %}home-page{% endif %}">
+    {% if page.layout == "article" %}
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
+    {% endif %}
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header" id="top">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="认识这个世界，返回首页">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">认识这个世界</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="{{ '/' | relative_url }}#topics">探索主题</a>
+        <a href="{{ '/' | relative_url }}#latest">最新文章</a>
+        <a href="{{ '/' | relative_url }}#about">关于本站</a>
+      </nav>
+      <a class="header-cta" href="{{ '/' | relative_url }}#latest">开始阅读 <span aria-hidden="true">↗</span></a>
+    </header>
+    {{ content }}
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="{{ '/' | relative_url }}">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">认识这个世界</span>
+      </a>
+      <p>从好奇开始，慢慢理解我们共同生活的世界。</p>
+      <a class="back-top" href="#top">回到顶部 ↑</a>
+    </footer>
+    {% unless page.layout == "article" %}
+      <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+    {% endunless %}
+  </body>
+</html>

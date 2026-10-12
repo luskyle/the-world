@@ -1,0 +1,62 @@
+---
+layout: default
+---
+{% assign articles = site.pages | where: "layout", "article" | sort: "order" %}
+{% assign previous_order = page.order | minus: 1 %}
+{% assign next_order = page.order | plus: 1 %}
+<main id="main" class="article-shell">
+  <nav class="breadcrumbs" aria-label="面包屑导航">
+    <a href="{{ '/' | relative_url }}">首页</a><span aria-hidden="true">/</span>
+    <a href="{{ '/' | relative_url }}#topics">{{ page.topic_name }}</a><span aria-hidden="true">/</span>
+    <span aria-current="page">第 {{ page.order }} 篇</span>
+  </nav>
+  <div class="article-grid">
+    <article class="article-content">
+      <header class="article-heading">
+        <div class="article-kicker"><span class="kicker-dot"></span>{{ page.topic_english }} <span class="kicker-divider">/</span> SERIES {{ page.order | prepend: "0" | slice: -2, 2 }}</div>
+        <h1>{{ page.title }}</h1>
+        <p class="article-deck">{{ page.description }}</p>
+        <div class="article-byline"><span class="reading-icon" aria-hidden="true">◷</span> 约 {{ page.reading_minutes }} 分钟阅读 <span class="byline-dot">·</span> {{ page.series_title }}</div>
+      </header>
+      <div class="prose">
+        {{ content }}
+      </div>
+      <div class="article-end">
+        <span class="end-orbit" aria-hidden="true">✳</span>
+        <p>好奇心，是认识世界的第一步。</p>
+      </div>
+      <nav class="article-pagination" aria-label="系列文章导航">
+        {% for article in articles %}
+          {% if article.order == previous_order %}
+            <a class="pagination-card previous-card" href="{{ article.url | relative_url }}">
+              <span class="pagination-label">← 上一篇</span>
+              <span class="pagination-title">{{ article.title }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+        {% for article in articles %}
+          {% if article.order == next_order %}
+            <a class="pagination-card next-card" href="{{ article.url | relative_url }}">
+              <span class="pagination-label">下一篇 →</span>
+              <span class="pagination-title">{{ article.title }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </article>
+    <aside class="article-rail">
+      <div class="rail-card">
+        <span class="rail-label">本篇导读</span>
+        <a class="rail-current" href="#main">{{ page.title }}</a>
+        <span class="rail-rule"></span>
+        <span class="rail-label">继续探索</span>
+        {% for article in articles %}
+          {% if article.url != page.url %}
+            <a class="rail-link" href="{{ article.url | relative_url }}"><span>{{ article.order | prepend: "0" | slice: -2, 2 }}</span>{{ article.title }}</a>
+          {% endif %}
+        {% endfor %}
+        <a class="rail-all" href="{{ '/' | relative_url }}#latest">查看全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+  </div>
+</main>
